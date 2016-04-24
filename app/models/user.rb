@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   ROLES = %w(user admin).freeze
 
+  def admin?
+    role == 'admin'
+  end
+
   def process_session
     if hs_sessions.empty? || hs_sessions.last.timeout?
       create_new_session
@@ -35,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def admin_exists?
-    User.count > 0
+    User.count(admin?) > 0
   end
 
   def create_new_session
