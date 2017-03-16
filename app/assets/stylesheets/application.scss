@@ -1,26 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-.banner {
-    background: transparent url('header.png') repeat scroll 0% 0%;
-    width: 980px;
-    height:300px;
-}
-
-.userBar {
-    position: relative;
-    background: #D41246  url('nav_back.jpg') no-repeat scroll right top;
-    display: block;
-    float: left;
-    margin: 0px auto;
-    list-style: outside none none;
-    width: 980px;
-    line-height: 30px;
-}
-
-.login {
-    padding-left: 10px;
-}
+@import "header";
+@import "navbar";
 
  #body {
     background-color: #EFE6E6;
