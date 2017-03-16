@@ -14,8 +14,8 @@ class HsSession < ActiveRecord::Base
   end
 
   def auto_sign_out
-    create_time_out if timein? && timeout.nil?
-    self.update(auto_signed_out: true)
+    self.auto_signed_out = true
+    create_time_out
   end
 
   private
