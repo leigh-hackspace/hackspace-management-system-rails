@@ -21,7 +21,7 @@ ActiveAdmin.register HsSession do
     column :timeout
     column :diff
     column :status
-    column :auto_sign_out
+    column :auto_signed_out
 
     actions
   end
