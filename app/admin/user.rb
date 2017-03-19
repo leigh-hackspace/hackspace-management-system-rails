@@ -11,8 +11,9 @@ ActiveAdmin.register User do
     column :status do |user|
       user.hs_sessions.last.try(:status) || "OUT"
     end
+
     column :sessions_count do |user|
-      user.hs_sessions.count
+      user.hs_sessions_count
     end
   end
 
