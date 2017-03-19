@@ -37,14 +37,9 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body id="body">
-    <div id="container">
-      <div id="header">
-        <div class="banner">
-        </div>
-        <div class="userBar">
-            <div class="login">User</div>
-        </div>
-      </div>
+    <div id="container-fluid">
+      <%= render 'layouts/navbar' %>
+      <%= render 'layouts/header' %>
       <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash alert <%= key %> alert-dismissable"><%= value %></div>
