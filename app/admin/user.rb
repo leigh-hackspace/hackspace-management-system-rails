@@ -1,6 +1,21 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :uid
 
+  filter :email
+  filter :uid
+
+  index do
+    selectable_column
+    column :email
+    column :uid
+    column :status do |user|
+      user.hs_sessions.last.try(:status) || "OUT"
+    end
+    column :sessions_count do |user|
+      user.hs_sessions.count
+    end
+  end
+
   form do |f|
     f.inputs "The stuff..." do
       f.input :email
