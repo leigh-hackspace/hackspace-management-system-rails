@@ -15,6 +15,8 @@ ActiveAdmin.register User do
     column :sessions_count do |user|
       user.hs_sessions_count
     end
+
+    actions
   end
 
   form do |f|
