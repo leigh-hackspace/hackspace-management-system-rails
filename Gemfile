@@ -11,8 +11,8 @@ gem 'devise', '~> 3.5', '>= 3.5.2'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18.4'
-gem 'rails', "4.2.5.1"
-gem 'sass-rails', '~> 5.0.3'
+gem 'rails', '~> 4.2.7.1'
+gem 'sass-rails', '~> 5.0.7'
 gem 'therubyracer', platforms: :ruby
 gem 'thin', '~> 1.6', '>= 1.6.4'
 gem 'turbolinks'
