@@ -13,7 +13,9 @@ class Api::V1::HsSessionsController < ApplicationController
         status: @hs_session.status
       }
     else
-      oh_no_no_no
+      render json: {
+        status: "UNRECOGNISED"
+      }
     end
   end
 
