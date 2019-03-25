@@ -4,18 +4,24 @@ class Api::V1::HsSessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, if: :create
 
   def create
-    user = User.find_by(uid: hs_sessions_params[:uid])
-    @hs_session = setup_hs_session(user)
-
-    @hs_session.process_session
-    if @hs_session.save
+    if hs_sessions_params[:uid] == "PING"
       render json: {
-        status: @hs_session.status
+        status: "PONG"
       }
     else
-      render json: {
-        status: "UNRECOGNISED"
-      }
+      user = User.find_by(uid: hs_sessions_params[:uid])
+      @hs_session = setup_hs_session(user)
+
+      @hs_session.process_session
+      if @hs_session.save
+        render json: {
+          status: @hs_session.status
+        }
+      else
+        render json: {
+          status: "UNRECOGNISED"
+        }
+      end
     end
   end
 
