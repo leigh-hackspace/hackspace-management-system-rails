@@ -3,15 +3,15 @@ source 'https://rubygems.org'
 ruby "2.6.1"
 
 gem 'activeadmin', '~> 1.4', '>= 1.4.3'
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'cancancan', '~> 1.13', '>= 1.13.1'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'cancancan', '~> 2.3'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'delayed_job_active_record', '~> 4.1'
 gem 'devise', '~> 4.5'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18.4'
-gem 'rails', '~> 4.2', '>= 4.2.11'
+gem 'rails', '~> 4.2', '>= 4.2.11.1'
 gem 'sass-rails', '~> 5.0.7'
 gem 'therubyracer', platforms: :ruby
 gem 'thin', '~> 1.6', '>= 1.6.4'
