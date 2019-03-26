@@ -17,10 +17,6 @@ class Api::V1::HsSessionsController < ApplicationController
         render json: {
           status: @hs_session.status
         }
-      else
-        render json: {
-          status: "UNRECOGNISED"
-        }
       end
     end
   end
@@ -43,7 +39,7 @@ class Api::V1::HsSessionsController < ApplicationController
 
   def oh_no_no_no
     render json: {
-      message: "That is not happening"
-    }, status: 404
+      status: "UNRECOGNISED"
+    }
   end
 end
