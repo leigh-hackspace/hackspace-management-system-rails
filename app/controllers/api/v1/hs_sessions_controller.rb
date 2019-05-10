@@ -1,7 +1,6 @@
 class Api::V1::HsSessionsController < ApplicationController
   protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token, if: :create
-  before_action :check_stuff, only: :create
 
   def create
     case hs_sessions_params[:uid]
