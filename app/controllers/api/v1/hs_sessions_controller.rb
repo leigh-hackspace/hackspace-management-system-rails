@@ -1,45 +1,53 @@
 class Api::V1::HsSessionsController < ApplicationController
   protect_from_forgery with: :null_session
-  rescue_from Exception, with: :oh_no_no_no
   skip_before_action :verify_authenticity_token, if: :create
+  before_action :check_stuff, only: :create
 
   def create
-    if hs_sessions_params[:uid] == "PING"
+    case hs_sessions_params[:uid]
+    when "PING"
       render json: {
         status: "PONG"
       }
     else
       user = User.find_by(uid: hs_sessions_params[:uid])
-      @hs_session = setup_hs_session(user)
-
-      @hs_session.process_session
-      if @hs_session.save
-        render json: {
-          status: @hs_session.status
-        }
-      end
+      user.nil? ? log_unknown_uid : setup_hs_session(user)
     end
   end
 
   private
 
+  def log_unknown_uid
+    render json: {
+      status: "UNRECOGNISED"
+    }
+
+    send_notification
+  end
+
   def setup_hs_session(user)
     if user.hs_sessions.blank? || user.hs_sessions.last.timeout?
-      HsSession.new(user: user)
+      hs_session = HsSession.new(user: user)
     else
-      user.hs_sessions.last
+      hs_session = user.hs_sessions.last
     end
+
+    hs_session.process_session
+
+    if hs_session.save
+      render json: {
+        status: hs_session.status
+      }
+    end
+  end
+
+  def send_notification
+    UnknownUriNotifier.send_notifications(hs_sessions_params[:uid])
   end
 
   def hs_sessions_params
     {
       uid: params[:uid]
-    }
-  end
-
-  def oh_no_no_no
-    render json: {
-      status: "UNRECOGNISED"
     }
   end
 end
