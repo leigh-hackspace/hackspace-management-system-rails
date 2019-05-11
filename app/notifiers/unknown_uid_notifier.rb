@@ -1,4 +1,4 @@
-class UnknownUriNotifier
+class UnknownUidNotifier
   def self.send_notifications(uid)
     HTTParty.post(ENV['SLACK_HMSR_CH_URL'],
     body: {

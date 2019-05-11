@@ -41,7 +41,7 @@ class Api::V1::HsSessionsController < ApplicationController
   end
 
   def send_notification
-    UnknownUriNotifier.send_notifications(hs_sessions_params[:uid])
+    UnknownUidNotifier.send_notifications(hs_sessions_params[:uid])
   end
 
   def hs_sessions_params
